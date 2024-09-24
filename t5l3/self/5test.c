@@ -15,7 +15,7 @@ void TestCalculation (const char * filenamei, const char * filenameo) {
 
     // задаём epsilon
     printf("epsilon: ");
-    scanf("%le", &epsilon);
+    scanf("%le", &epsilon); // epsilon = float(input())
     printf("x: ");
     scanf("%le", &x);
 

@@ -18,9 +18,9 @@ int main(void) {
     }
 
     printf("epsilon: ");
-    scanf("%le", &epsilon);
+    scanf("%lf", &epsilon);
     printf("x: ");
-    scanf("%le", &x);
+    scanf("%lf", &x);
 
     res = Lastnumber(f, epsilon, x);
     remove("output.txt");

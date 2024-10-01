@@ -15,9 +15,9 @@ void TestCalculation (const char * filenamei, const char * filenameo) {
 
     // задаём epsilon
     printf("epsilon: ");
-    scanf("%le", &epsilon); // epsilon = float(input())
+    scanf("%lf", &epsilon); // epsilon = float(input())
     printf("x: ");
-    scanf("%le", &x);
+    scanf("%lf", &x);
 
     // получение результата и его обработка
     res = Lastnumber(f, epsilon, x);

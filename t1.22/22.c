@@ -15,6 +15,7 @@ void TestCalculation (const char * fni, const char * fno) {
     res = GreatestSequence(f);
     fo = fopen(fno, "w");
     fprintf(fo, "%i", res);
+    fprintf(stdout, "%i\n", res);
 
     fclose(f);
     fclose(fo);

@@ -8,7 +8,10 @@ double GreatestSequence(FILE *f) {
         if (feof(f)) {break;} // если дошли до конца файла
         if (current >= last) {
             count += 1;
-            if (boolean) {count += 1;}
+            if (boolean) {
+                count += 1;
+                boolean = 0;
+            }
         }
         else {
             if (count > res) {

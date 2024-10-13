@@ -24,5 +24,7 @@ void TestCalculation (const char * fni, const char * fno) {
 int main(void) {
     TestCalculation("input1.txt", "output1.txt");
     TestCalculation("input2.txt", "output2.txt");
+    TestCalculation("input3.txt", "output3.txt");
+    TestCalculation("input4.txt", "output4.txt");
     return 0;
 }

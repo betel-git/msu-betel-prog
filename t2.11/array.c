@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include "array.h"
-
+// позаимствовано :)
 double * ReadArrayCnt(FILE *f, size_t *size, int *errcode) {
     size_t i;    // счетчик
     double x;    // для ввода очередного числа
     double *a;   // указатель на массив
 
-    *errcode = 0;  // надеемся, что все будет зорошо
+    *errcode = 0;  // надеемся, что все будет хорошо
 
     // а вдруг файл не открыт!
     if (!f) {

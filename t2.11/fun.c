@@ -1,5 +1,5 @@
 #include "fun.h"
-
+// принцип работы заключается в том, чтобы идти от конца к началу
 void MainFunction(double *arr, int size) {
     double sum = 0;
     int b;

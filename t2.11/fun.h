@@ -1,0 +1,1 @@
+void MainFunction(double *arr, int size);

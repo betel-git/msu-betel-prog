@@ -64,11 +64,6 @@ int main(void) {
         printf("%s\n", (TestSort(lst[i], arr)) ? "Success" : "Failure");
         free(arr);
     }
-/*     for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 5; j++) {
-            printf("%lf\n", result[i][j]);
-        }
-    } */
 
 
    printf("------------------------------------------------------------\n");

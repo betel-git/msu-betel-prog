@@ -1,5 +1,6 @@
 #include "t3.4.h"
 
+// Функция для проверки последовательности на возрастание
 bool TestSort(int n, double *arr) {
     int i;
     for (i = 1; i < n; i++) {
@@ -10,14 +11,14 @@ bool TestSort(int n, double *arr) {
     return true;
 }
 
-
+// Функция сравнения для double переменных
 int CmpDouble(const void *a, const void *b) {
     const double *pa = (const double *)a;
     const double *pb = (const double *)b;
     return (*pa < *pb) ? -1 : (*pa > *pb) ? 1 : 0;
 }
 
-
+// Первая реализация сортировки (просто double-массив)
 void TextFirst(FILE *inputFile, FILE *outputFile) {
     size_t size;
     int errcode;
@@ -27,6 +28,7 @@ void TextFirst(FILE *inputFile, FILE *outputFile) {
 
 
     arr = ReadArrayCnt(inputFile, &size, &errcode);
+    
     t1 = clock();
     InsertionSortWithBinSearch1(arr, size);
     t2 = clock();
@@ -45,7 +47,7 @@ void TextFirst(FILE *inputFile, FILE *outputFile) {
     free(arr);
 }
 
-
+// Вторая реализация сортировки (double-массив + заданная функция сравнения)
 void TextSecond (FILE *inputFile, FILE *outputFile) {
     size_t size;
     int errcode;
@@ -55,14 +57,13 @@ void TextSecond (FILE *inputFile, FILE *outputFile) {
 
 
     arr = ReadArrayCnt(inputFile, &size, &errcode);
+
     t1 = clock();
     InsertionSortWithBinSearch2(arr, size);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time 2 %f\n", seconds);
 
-    // Запись результатов в выходной файл
-    //fprintf(outputFile, "Название входного файла: %s\n", inputFileName);
     for (size_t i = 0; i < size; ++i) {
         fprintf(outputFile, "%.lf\n", arr[i]);
     }

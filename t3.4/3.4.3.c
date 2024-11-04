@@ -19,6 +19,14 @@ bool test_sort(int n, double *arr) {
     return true;
 }
 
+int CmpDouble(const void *a, const void *b);
+
+int CmpDouble(const void *a, const void *b) {
+    const double *pa = (const double *)a;
+    const double *pb = (const double *)b;
+    return (*pa < *pb) ? -1 : (*pa > *pb) ? 1 : 0;
+}
+
 /* int cmp_3(const void *a, const void *b);
 
 int cmp_3(const void *a, const void *b)
@@ -33,14 +41,14 @@ int cmp_3(const void *a, const void *b)
     else {return 0;}   
 } */
 
-int compareDoubles(const void *a, const void *b);
+/* int compareDoubles(const void *a, const void *b);
 // Функция сравнения для вещественных чисел
 int compareDoubles(const void *a, const void *b) {
-    const double *arg1 = (const double *)a;
-    const double *arg2 = (const double *)b;
+    double arg1 = *(const double *)a;
+    double arg2 = *(const double *)b;
     
-    return (*arg1 < *arg2) ? -1 : (*arg1 > *arg2) ? 1 : 0;
-}
+    return (arg1 < arg2) ? -1 : (arg1 > arg2) ? 1 : 0;
+} */
 
 
 
@@ -57,8 +65,8 @@ int main(void) {
     double seconds;
     int m = 0;
     
-    printf("Введите имя входного файла: ");
-    scanf("%s", inputFileName);
+    //printf("Введите имя входного файла: ");
+    //scanf("%s", inputFileName);
     
     // открываем выходной файл
     outputFile = fopen("output.txt", "w");
@@ -68,7 +76,7 @@ int main(void) {
     }
     
     // Открываем входной файл
-    inputFile = fopen(inputFileName, "r");
+    inputFile = fopen(/*inputFileName*/"0.txt", "r");
     if (!inputFile) {
         printf("Error opening input file %s\n", inputFileName);
         return -1;
@@ -77,13 +85,13 @@ int main(void) {
 
     arr = ReadArrayCnt(inputFile, &size, &errcode);
     t1 = clock();
-    insertion_sort_with_binary_search3(arr, size, sizeof(double), compareDoubles);
+    insertion_sort_with_binary_search3(arr, size, sizeof(double), CmpDouble);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time %f\n", seconds);
 
     // Запись результатов в выходной файл
-    fprintf(outputFile, "Название входного файла 1: %s\n", inputFileName);
+    //fprintf(outputFile, "Название входного файла 1: %s\n", inputFileName);
     for (size_t i = 0; i < size; ++i) {
         fprintf(outputFile, "%.lf\n", arr[i]);
     }

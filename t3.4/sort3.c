@@ -3,16 +3,24 @@
 
 
 void insertion_sort_with_binary_search3(void *base, size_t numElements, size_t elementSize, int (*comparator)(const void *, const void *)) {
-    for (size_t i = 1; i < numElements; i++) {
+    for (size_t i = 0; i < numElements; i++) {
+        size_t pos = 0;
         void *key = (char *)base + i * elementSize;       // Элемент, который нужно вставить
-        size_t pos = binary_search3(base, 0, i - 1, elementSize, key, comparator);
+        printf("\ni = %ld\n", i);
+        pos = binary_search3(base, 0, i, i, elementSize, key, comparator);
+        printf("pos = %ld\n", pos);
         
-        // Перемещаем элементы вправо, чтобы освободить место для вставляемого элемента
-        for (size_t j = i; j > pos; --j) {
-            memcpy((char *)base + j * elementSize, (char *)base + (j - 1) * elementSize, elementSize);
+        
+        // Перемещаем элементы вправо, начиная с позиции после найденной
+        if (pos != i) {
+            void *temp = malloc(elementSize);
+            memcpy(temp, key, elementSize);
+            
+            memmove((char *)base + pos * elementSize + elementSize, (char *)base + pos * elementSize, (i - pos) * elementSize);
+            
+            memcpy((char *)base + pos * elementSize, temp, elementSize);
+            free(temp);
         }
-        
-        // Вставляем ключ в нужную позицию
-        memcpy((char *)base + pos * elementSize, key, elementSize);
+        //printf("arr = %p\n", base);
     }
 }

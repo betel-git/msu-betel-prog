@@ -7,9 +7,9 @@
 #include "sort.h"
 #include "array.h"
 
-bool test_sort(int n, double *arr);
+bool TestSort(int n, double *arr);
 
-bool test_sort(int n, double *arr) {
+bool TestSort(int n, double *arr) {
     int i;
     for (i = 1; i < n; i++) {
         if (arr[i - 1] > arr[i]) {
@@ -51,7 +51,7 @@ int main(void) {
 
     arr = ReadArrayCnt(inputFile, &size, &errcode);
     t1 = clock();
-    insertion_sort_with_binary_search2(arr, size);
+    InsertionSortWithBinSearch2(arr, size);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time %f\n", seconds);
@@ -63,7 +63,7 @@ int main(void) {
     }
 
 
-    printf("%s\n", (test_sort(size, arr)) ? "Success1" : "Failure1");
+    printf("%s\n", (TestSort(size, arr)) ? "Success1" : "Failure1");
     if (m == 1) {
         printf("Failure3\n");
     }

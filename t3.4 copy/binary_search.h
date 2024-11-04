@@ -1,5 +1,5 @@
 #include <math.h>
 
-int binary_search(double arr[], int left, int right, double key);
+int BinSearch(double arr[], int left, int right, double key);
 
-int binary_search2(double arr[], int left, int right, double key, int (*cmp)(double, double));
+int BinSearch2(double arr[], int left, int right, double key, int (*cmp)(double, double));

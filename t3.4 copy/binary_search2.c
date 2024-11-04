@@ -1,7 +1,7 @@
 #include "binary_search.h"
 
 // Функция для выполнения бинарного поиска позиции вставки элемента
-int binary_search2(double arr[], int left, int right, double key, int (*cmp)(double, double))
+int BinSearch2(double arr[], int left, int right, double key, int (*cmp)(double, double))
 {
     while (left <= right) {
         int mid = left + (right - left) / 2;

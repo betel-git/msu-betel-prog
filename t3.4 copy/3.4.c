@@ -7,10 +7,10 @@
 #include "sort.h"
 #include "array.h"
 
-bool test_sort(int n, double *arr);
+bool TestSort(int n, double *arr);
 //int CmpDouble(const void *a, const void *b);
 
-bool test_sort(int n, double *arr) {
+bool TestSort(int n, double *arr) {
     int i;
     for (i = 1; i < n; i++) {
         if (arr[i - 1] > arr[i]) {
@@ -61,7 +61,7 @@ int main(void) {
     arr = ReadArrayCnt(inputFile, &size, &errcode);
     arr1 = arr;
     t1 = clock();
-    insertion_sort_with_binary_search(arr, size);
+    InsertionSortWithBinSearch1(arr, size);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time %f\n", seconds);
@@ -74,7 +74,7 @@ int main(void) {
 
     //arr1 = ReadArrayCnt(inputFile, &size, &errcode);
     t1 = clock();
-    insertion_sort_with_binary_search2(arr1, size);
+    InsertionSortWithBinSearch2(arr1, size);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time %f\n", seconds);
@@ -94,8 +94,8 @@ int main(void) {
 
 
     
-    printf("%s\n", (test_sort(size, arr)) ? "Success1" : "Failure1");
-    printf("%s\n", (test_sort(size, arr1)) ? "Success2" : "Failure2");
+    printf("%s\n", (TestSort(size, arr)) ? "Success1" : "Failure1");
+    printf("%s\n", (TestSort(size, arr1)) ? "Success2" : "Failure2");
     for (size_t i = 0; i < size; ++i) {
         if(fabs(arr[i] - arr1[i]) > eps) {
             m = 1;

@@ -12,7 +12,7 @@ void insertion_sort_with_binary_search3(void *arr, int n, size_t elem_length, in
 {
     for (int i = 1; i < n; ++i) {
         double key = arr[i];
-        int pos = binary_search2(arr, 0, i - 1, key, Compare);
+        int pos = BinSearch2(arr, 0, i - 1, key, Compare);
         
         // Перемещаем элементы вправо, чтобы освободить место для вставляемого элемента
         for (int j = i; j > pos; --j) {

@@ -16,12 +16,10 @@ int BinSearch(double arr[], int left, int right, double key)
             left = mid + 1;
         }
     }
-    
-    // Если элемент не найден, возвращаем позицию, где он должен быть вставлен
     return left;
 }
 
-// Функция для выполнения бинарного поиска позиции вставки элемента
+// Функция для выполнения бинарного поиска позиции вставки элемента с заданной функцией сравнения
 int BinSearch2(double arr[], int left, int right, double key, int (*cmp)(double, double))
 {
     while (left <= right) {
@@ -37,8 +35,6 @@ int BinSearch2(double arr[], int left, int right, double key, int (*cmp)(double,
             left = mid + 1;
         }
     }
-    
-    // Если элемент не найден, возвращаем позицию, где он должен быть вставлен
     return left;
 }
 

@@ -27,23 +27,19 @@ void TextFirst(FILE *inputFile, FILE *outputFile) {
     double seconds;
 
 
-    arr = ReadArrayCnt(inputFile, &size, &errcode);
-    
+    arr = ReadArrayCnt(inputFile, &size, &errcode); // создаём массив
+
     t1 = clock();
-    InsertionSortWithBinSearch1(arr, size);
+    InsertionSortWithBinSearch1(arr, size); // непосредственно сортировка
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time 1 %f\n", seconds);
 
-    // Запись результатов в выходной файл
-    //fprintf(outputFile, "Название входного файла 1: %s\n", inputFileName);
     for (size_t i = 0; i < size; ++i) {
         fprintf(outputFile, "%.lf\n", arr[i]);
     }
     
-    printf("%s\n", (TestSort(size, arr)) ? "Success1" : "Failure1");
-
-
+    printf("%s\n", (TestSort(size, arr)) ? "Success1" : "Failure1"); // проверка последовательности на возрастание
     free(arr);
 }
 
@@ -55,11 +51,10 @@ void TextSecond (FILE *inputFile, FILE *outputFile) {
     clock_t t1, t2;
     double seconds;
 
-
-    arr = ReadArrayCnt(inputFile, &size, &errcode);
+    arr = ReadArrayCnt(inputFile, &size, &errcode); // создаём массив
 
     t1 = clock();
-    InsertionSortWithBinSearch2(arr, size);
+    InsertionSortWithBinSearch2(arr, size); // непосредственно сортировка
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time 2 %f\n", seconds);
@@ -67,13 +62,11 @@ void TextSecond (FILE *inputFile, FILE *outputFile) {
     for (size_t i = 0; i < size; ++i) {
         fprintf(outputFile, "%.lf\n", arr[i]);
     }
-    printf("%s\n", (TestSort(size, arr)) ? "Success2" : "Failure2");
-
-
+    printf("%s\n", (TestSort(size, arr)) ? "Success2" : "Failure2"); // проверка последовательности на возрастание
     free(arr);
 }
 
-
+// Третья реализация сортировки (произвольный массив, заданная функция сравнения)
 void TextThird (FILE *inputFile, FILE *outputFile) {
     size_t size;
     int errcode;
@@ -81,21 +74,19 @@ void TextThird (FILE *inputFile, FILE *outputFile) {
     clock_t t1, t2;
     double seconds;
 
-    arr = ReadArrayCnt(inputFile, &size, &errcode);
+    arr = ReadArrayCnt(inputFile, &size, &errcode); // создаём массив
+
     t1 = clock();
-    InsertionSortWithBinSearch3(arr, size, sizeof(double), CmpDouble);
+    InsertionSortWithBinSearch3(arr, size, sizeof(double), CmpDouble); // непосредственно сортировка
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("sorting time 3 %f\n", seconds);
 
-    // Запись результатов в выходной файл
-    //fprintf(outputFile, "Название входного файла: %s\n", inputFileName);
     for (size_t i = 0; i < size; ++i) {
         fprintf(outputFile, "%.lf\n", arr[i]);
     }
     
-    printf("%s\n", (TestSort(size, arr)) ? "Success3" : "Failure3");
-
+    printf("%s\n", (TestSort(size, arr)) ? "Success3" : "Failure3"); // проверка последовательности на возрастание
     free(arr);
 }
 
@@ -146,6 +137,7 @@ int main(void) {
     arr1 = ReadArrayCnt(outputFile1, &size, &errcode);
     arr2 = ReadArrayCnt(outputFile2, &size, &errcode);
     arr3 = ReadArrayCnt(outputFile3, &size, &errcode);
+    // Попарная проверка на равенство последовательностей
     for (size_t i = 0; i < size; i++) {
         if (fabs(arr1[i] - arr2[i]) > 1e-6 || fabs(arr1[i] - arr3[i]) > 1e-6 || fabs(arr3[i] - arr2[i]) > 1e-6) {
             m = 1;

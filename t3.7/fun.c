@@ -137,9 +137,7 @@ void MergeSortIterative1(double arr[], int n) {
     }
 
     while (width < n) {
-        int i;
-        
-        for (i = 0; i < n; i += 2 * width) {
+        for (int i = 0; i < n; i += 2 * width) {
             int left = i;
             int mid = i + width - 1;
             int right = i + 2 * width - 1;
@@ -170,9 +168,7 @@ void MergeSortIterative2(double arr[], int n) {
     }
 
     while (width < n) {
-        int i;
-        
-        for (i = 0; i < n; i += 2 * width) {
+        for (int i = 0; i < n; i += 2 * width) {
             int left = i;
             int mid = i + width - 1;
             int right = i + 2 * width - 1;

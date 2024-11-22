@@ -1,5 +1,4 @@
 #include "3.13.h"
-//#define TestBit(x, bit) ((x >> bit) & 1)
 
 // Функция сравнения двух int чисел для qsort
 int CmpInt(const void *a, const void *b) {
@@ -31,6 +30,7 @@ void Swap(unsigned int* a, unsigned int* b) {
     *b = temp;
 }
 
+// Функция из лекции
 int QuickBitSortPartition(int n, unsigned int *a, int ibit, bool ascending) {
     int i, j;
     while(true) {
@@ -49,7 +49,6 @@ int QuickBitSortPartition(int n, unsigned int *a, int ibit, bool ascending) {
     }
 }
 
-
 // Рекурсивная функция быстрой сортировки по битам
 void QuickBitSortRecursive(unsigned int *a, int left, int right, int maxBits, bool ascending) {
     if (left < right && maxBits >= 1) {
@@ -65,7 +64,7 @@ void QuickBitSort(unsigned int *a, int n, bool ascending) {
     QuickBitSortRecursive(a, 0, n - 1, maxBits - 1, ascending);
 }
 
-
+// Функция для считывания массива из файла
 unsigned int * ReadArrayCnt(FILE *f, int *size, int *errcode) {
     int i;    // счетчик
     unsigned int x;    // для ввода очередного числа

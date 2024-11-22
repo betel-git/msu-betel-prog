@@ -48,7 +48,7 @@ int main(void) {
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("seconds %lf\n", seconds);
 
-    for (long long int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         fprintf(outputFile, "%u\n", arr[i]);
     }
 

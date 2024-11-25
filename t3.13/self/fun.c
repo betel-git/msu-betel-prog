@@ -51,7 +51,7 @@ int QuickBitSortPartition(int n, unsigned int *a, int ibit, bool ascending) {
 
 // Рекурсивная функция быстрой сортировки по битам
 void QuickBitSortRecursive(unsigned int *a, int left, int right, int maxBits, bool ascending) {
-    if (left < right && maxBits >= 1) {
+    if (left < right && maxBits >= 0) {
         int pivot = QuickBitSortPartition(right - left + 1, a + left, maxBits, ascending);
         QuickBitSortRecursive(a, left, left + pivot - 1, maxBits - 1, ascending);
         QuickBitSortRecursive(a, left + pivot, right, maxBits - 1, ascending);

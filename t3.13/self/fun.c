@@ -32,14 +32,14 @@ void Swap(unsigned int* a, unsigned int* b) {
 
 // Функция из лекции
 int QuickBitSortPartition(int n, unsigned int *a, int ibit, bool ascending) {
-    int i, j;
+    int i = 0, j = n - 1;
     while(true) {
         if (ascending) { // По возрастанию
-            for (i = 0; i < n && !TestBit(a[i], ibit); i++);
-            for (j = n - 1; j >= 0 && TestBit(a[j], ibit); j--);
+            for (; i < n && !TestBit(a[i], ibit); i++);
+            for (; j >= 0 && TestBit(a[j], ibit); j--);
         } else { // По убыванию
-            for (i = 0; i < n && TestBit(a[i], ibit); i++);
-            for (j = n - 1; j >= 0 && !TestBit(a[j], ibit); j--);
+            for (; i < n && TestBit(a[i], ibit); i++);
+            for (; j >= 0 && !TestBit(a[j], ibit); j--);
         }
         if (i == n || j == -1) return 0;
         if (i < j) {

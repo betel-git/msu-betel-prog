@@ -38,7 +38,8 @@ int main(void) {
 
     printf("Насколько близко сложность алгоритма подходит к NlogN: \n");
     printf("NlogN / MlogM = %lf\n", ((4e5 * log10(4e5)) / (2e5 * log10(2e5))));
-    printf("sort 1: %lf\n", (result[0][4] / result[0][3]));
+    //printf("logN / logM = %lf\n", ((log10(4e5)) / (log10(2e5))));
+    printf("sort 1: %lf\n", (result[0][4] / result[0][2]));
     printf("qsort: %lf\n", (result[1][4] / result[1][3]));
 
    printf("------------------------------------------------------------\n");

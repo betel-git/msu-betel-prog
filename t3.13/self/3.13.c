@@ -10,11 +10,14 @@ int main(void) {
     FILE *outputFile;
     time_t t1, t2;
     double seconds;
-/*     bool ascending;
+    int ascending_int;
+    bool ascending;
 
 
     printf("Возрастание - 1, убывание - 0: ");
-    scanf("%d", &ascending); */
+    scanf("%d", &ascending_int);
+    if (ascending_int) ascending = true;
+    else ascending = false;
  
     printf("Введите имя входного файла: ");
     scanf("%s", inputFileName);
@@ -43,7 +46,7 @@ int main(void) {
 
     
     t1 = clock();
-    QuickBitSort(arr, n, true);
+    QuickBitSort(arr, n, ascending);
     t2 = clock();
     seconds = (double)(t2 - t1) / CLOCKS_PER_SEC;
     printf("seconds %lf\n", seconds);

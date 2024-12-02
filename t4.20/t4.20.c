@@ -4,8 +4,6 @@
 
 void generate_chessboard(uint32_t k);
 
-//void print_binary_row(uint32_t value);
-
 void generate_chessboard(uint32_t k) {
     for (uint32_t i = 0; i < ICON_SIZE; i++) {
         char binary_str[32];
@@ -27,6 +25,10 @@ int main(void) {
     uint32_t k;
     printf("Введите размер клетки k: ");
     scanf("%u", &k);
+    if (k > 32 || k < 1) {
+        fprintf(stderr, "The value outside the given range\n");
+        return -1;
+    }
 
     generate_chessboard(k);
     

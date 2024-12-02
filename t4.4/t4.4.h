@@ -15,6 +15,6 @@
 
 int reverse_bytes(int value);
 
-void print_binary(int n);
+void PrintBinary(int n);
 
 #endif

@@ -1,40 +1,50 @@
 #include <stdio.h>
 #include <limits.h>
 #include <time.h>
+
+void PrintBinaryTxt(FILE *fo, unsigned long int n);
+
+void PrintBinaryTxt(FILE *fo, unsigned long int n) {
+    // Максимальное количество битов в unsigned long int
+    const int num_bits = sizeof(n) * CHAR_BIT;
+    for (int i = num_bits - 1; i >= 0; i--) {
+        fprintf(fo, "%ld", (n >> i) & 1);
+        if (i % 8 == 0 && i != 0)
+            fprintf(fo, " ");
+    }
+    fprintf(fo, "\n");
+}
  
 int main(void) {
-    long long n;
-    long long b = sizeof(n) * CHAR_BIT;
+    int n;
+    unsigned int m = 1;
     FILE *fo;
     time_t t1, t2;
     double seconds;
-   
+
     fo = fopen("output.txt", "w");
-    if (fo == NULL)
-    {
+    if (fo == NULL) {
         fprintf (stderr, "Can't open output.txt\n");
         return -1;
     }
    
-    printf("n [2.. %lld]: ", b);
-    scanf("%lld", &n);
-    if (n < 2 || n > b){
+    printf("n [2...64]: ");
+    scanf("%d", &n);
+    if (n < 2 || n > 64) {
         fprintf(stderr, "The value outside the given range\n");
         return -1;
     }
 
-    /*for (unsigned int t = ~(n < b ? ~0 << n:0); t; --t) {
-        for (int k = n; k-->0;)
-            if (1 << k & t) fprintf(fo," %d",k + 1);
-        fprintf(fo,"\n");
-    } */
+    for(int i = 1; i <= n; i++) {
+        m = m * 2;
+    }
 
    t1 = clock();
-       // Генерируем все подмножества
-    for (unsigned int mask = 0; mask < (1ULL << n); ++mask) {
-        //printf("%u\n", mask);
+    for (unsigned long int mask = 0; mask < m; ++mask) {
+        fprintf(fo, "mask %lu  ", mask);
+        PrintBinaryTxt(fo, mask);
         for (int bit = 0; bit < n; ++bit) {
-            if (mask & (1ULL << bit)) {
+            if (mask & (1 << bit)) {
                 fprintf(fo, "%d ", bit + 1);
             }
         }
@@ -45,3 +55,6 @@ int main(void) {
     printf("time: %f\n", seconds);
     return 0;
 }
+
+// если не знать, что \Sigma_{k=0}^n C_n^k = 2^n, то можно просто
+// взять вместо m (1 << n)

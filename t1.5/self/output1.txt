@@ -1,1 +1,0 @@
-Last number`s index is 20.000000

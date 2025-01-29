@@ -1,1 +1,0 @@
-void Pascal (int *arr, int n);

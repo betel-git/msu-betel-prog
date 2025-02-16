@@ -1,0 +1,164 @@
+---------------------
+INPUT: 4, 0.250000, 3.500000
+
+TEST 1
+warning: fabs(b - a) <= eps
+iterations: 0
+
+TEST 2
+warning: fa * fb > 0
+iterations: 0
+
+TEST 3
+warning: fabs(b - a) <= eps
+iterations: 0
+
+TEST 4
+warning: fabs(b - a) <= eps
+iterations: 0
+
+TEST 5
+warning: fa * fb > 0
+iterations: 0
+
+---------------------
+INPUT: 0.01, -1.000000, 2.000000
+
+TEST 1
+answer: 1.41992187500000000000
+iterations: 9
+
+TEST 2
+answer: 0.00195312500000000000
+iterations: 9
+
+TEST 3
+answer: 0.00195312500000000000
+iterations: 9
+
+TEST 4
+warning: fa * fb > 0
+iterations: 0
+
+TEST 5
+answer: -0.61914062500000000000
+iterations: 9
+
+---------------------
+INPUT: 1e-08, -1.000000, 2.000000
+
+TEST 1
+answer: 1.41421355865895748138
+iterations: 29
+
+TEST 2
+answer: 0.00000000186264514923
+iterations: 29
+
+TEST 3
+answer: 0.00000000186264514923
+iterations: 29
+
+TEST 4
+warning: fa * fb > 0
+iterations: 0
+
+TEST 5
+answer: -0.61803398467600345612
+iterations: 29
+
+---------------------
+INPUT: 1e-05, -3.000000, 3.000000
+
+TEST 1
+warning: fa * fb > 0
+iterations: 0
+
+TEST 2
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 3
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 4
+answer: 2.50000190734863281250
+iterations: 20
+
+TEST 5
+answer: -0.61803245544433593750
+iterations: 20
+
+---------------------
+INPUT: 1e-05, -100.000000, 100.000000
+
+TEST 1
+warning: fa * fb > 0
+iterations: 0
+
+TEST 2
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 3
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 4
+answer: 2.50000357627868652344
+iterations: 25
+
+TEST 5
+answer: -0.61803460121154785156
+iterations: 25
+
+---------------------
+INPUT: 1e-05, 1.250000, 4.000000
+
+TEST 1
+answer: 1.41421175003051757812
+iterations: 19
+
+TEST 2
+warning: fa * fb > 0
+iterations: 0
+
+TEST 3
+answer: 3.14159536361694335938
+iterations: 19
+
+TEST 4
+answer: 2.50000143051147460938
+iterations: 19
+
+TEST 5
+answer: 1.61803007125854492188
+iterations: 19
+
+---------------------
+INPUT: 1e-100, 1.250000, 4.000000
+
+TEST 1
+warning: c <= a || c >= b
+answer: 1.41421356237309492343
+iterations: 55
+
+TEST 2
+warning: fa * fb > 0
+iterations: 0
+
+TEST 3
+warning: c <= a || c >= b
+answer: 3.14159265358979311600
+iterations: 53
+
+TEST 4
+answer: 2.50000000000000000000
+iterations: 51
+
+TEST 5
+answer: 1.61803398874989468048
+iterations: 50
+
+Not a number value

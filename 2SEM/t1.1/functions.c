@@ -1,19 +1,31 @@
 #include "headers.h"
 
-double f(double x, int i) {
-    if(i == 1) return x * x - 2; // TEST 1
-    else if(i == 2) return x * x * x; // TEST 2
-    else if(i == 3) return sin(x); // TEST 3
-    else if(i == 4) return 0.1 * x - 0.25; // TEST 4
-    else if(i == 5) return x * x * x - 2 * x * x + 1; // TEST 5
-    else return -1;
+double f0(double x) {
+    return exp(x) - 1e-10;
+}
+
+double f1(double x) {
+    return tan(x) - 1234567;
+}
+
+double f2(double x) {
+    return x * x * x * x - 1e-16;
+}
+
+double f3(double x) {
+    return sin(x);
+}
+
+double f4(double x) {
+    return x * x * x;
 }
 
 
-double Bisection (double a, double b, double eps, double(*f)(double, int), int *err, int i, int *iterations) {
+
+double Bisection (double a, double b, double eps, double(*f)(double), int *err, int *iterations) {
     double fa, fb, fc, c;
-    fa = f(a, i);
-    fb = f(b, i);
+    fa = f(a);
+    fb = f(b);
     if(fa * fb > 0) {
         *err = 1;
         return 0;
@@ -40,15 +52,15 @@ double Bisection (double a, double b, double eps, double(*f)(double, int), int *
             *err = 2;
             return c;
         }
-        fc = f(c, i);
+        fc = f(c);
         if(fc <= 0 && fc >= 0) {
             *err = 0;
             return c;
         }
         if(fc * fa < 0) b = c;
         else a = c;
-        fa = f(a, i);
-        fb = f(b, i);
+        fa = f(a);
+        fb = f(b);
     }
     *err = 0;
     return c;

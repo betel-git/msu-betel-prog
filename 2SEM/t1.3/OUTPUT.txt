@@ -1,8 +1,12 @@
 ---------------------
-INPUT: 4, 0.250000, 3.500000
+INPUT: 1e-25, -25.000000, -20.000000
+
+TEST 0
+answer: -23.02585092994045723458
+iterations: 8
 
 TEST 1
-warning: fabs(b - a) <= eps
+warning: fa * fb > 0
 iterations: 0
 
 TEST 2
@@ -10,153 +14,103 @@ warning: fa * fb > 0
 iterations: 0
 
 TEST 3
-warning: fabs(b - a) <= eps
-iterations: 0
-
-TEST 4
-warning: fabs(b - a) <= eps
-iterations: 0
-
-TEST 5
-warning: fabs(b - a) <= eps
-iterations: 0
-
----------------------
-INPUT: 0.01, -1.000000, 2.000000
-
-TEST 1
-answer: 1.41421356205732040578
-iterations: 4
-
-TEST 2
-answer: -0.01883377690283355096
-iterations: 7
-
-TEST 3
-answer: 0.00000000000783517782
-iterations: 3
-
-TEST 4
-warning: fa * fb > 0
-iterations: 0
-
-TEST 5
-warning: fa * fb > 0
-iterations: 0
-
----------------------
-INPUT: 1e-08, -1.000000, 2.000000
-
-TEST 1
-answer: 1.41421356237309514547
-iterations: 5
-
-TEST 2
-answer: -0.00000002588289958706
-iterations: 31
-
-TEST 3
-answer: 0.00000000000000000000
-iterations: 4
-
-TEST 4
-warning: fa * fb > 0
-iterations: 0
-
-TEST 5
-warning: fa * fb > 0
-iterations: 0
-
----------------------
-INPUT: 1e-05, -3.000000, 3.000000
-
-TEST 1
-warning: fa * fb > 0
-iterations: 0
-
-TEST 2
-answer: 0.00000000000000000000
-iterations: 1
-
-TEST 3
-answer: 0.00000000000000000000
-iterations: 1
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-warning: fa * fb > 0
-iterations: 0
-
----------------------
-INPUT: 1e-05, -100.000000, 100.000000
-
-TEST 1
-warning: fa * fb > 0
-iterations: 0
-
-TEST 2
-answer: 0.00000000000000000000
-iterations: 1
-
-TEST 3
-answer: 0.00000000000000000000
-iterations: 1
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-warning: fa * fb > 0
-iterations: 0
-
----------------------
-INPUT: 1e-05, 1.250000, 4.000000
-
-TEST 1
-answer: 1.41421356237313466941
-iterations: 3
-
-TEST 2
-warning: fa * fb > 0
-iterations: 0
-
-TEST 3
-answer: 3.14159265358979311600
-iterations: 3
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-answer: 1.61803398607187065572
-iterations: 4
-
----------------------
-INPUT: 1e-100, 1.250000, 4.000000
-
-TEST 1
-answer: -nan
-iterations: 5
-
-TEST 2
-warning: fa * fb > 0
-iterations: 0
-
-TEST 3
-answer: -nan
-iterations: 4
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
 answer: -nan
 iterations: 6
+
+TEST 4
+warning: fa * fb > 0
+iterations: 0
+
+---------------------
+INPUT: 1e-25, 1.570796, 1.570796
+
+TEST 0
+warning: fa * fb > 0
+iterations: 0
+
+TEST 1
+answer: 1.57079551679430529099
+iterations: 2
+
+TEST 2
+warning: fa * fb > 0
+iterations: 0
+
+TEST 3
+warning: fa * fb > 0
+iterations: 0
+
+TEST 4
+warning: fa * fb > 0
+iterations: 0
+
+---------------------
+INPUT: 1e-16, 0.000001, 0.001000
+
+TEST 0
+warning: fa * fb > 0
+iterations: 0
+
+TEST 1
+warning: fa * fb > 0
+iterations: 0
+
+TEST 2
+answer: 0.00000119979000601234
+iterations: 4
+
+TEST 3
+warning: fa * fb > 0
+iterations: 0
+
+TEST 4
+warning: fa * fb > 0
+iterations: 0
+
+---------------------
+INPUT: 1e-25, 0.000000, 1.000000
+
+TEST 0
+warning: fa * fb > 0
+iterations: 0
+
+TEST 1
+warning: fa * fb > 0
+iterations: 0
+
+TEST 2
+warning: division by zero
+iterations: 2
+
+TEST 3
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 4
+answer: 0.00000000000000000000
+iterations: 1
+
+---------------------
+INPUT: 1e-25, -1.000000, 2.000000
+
+TEST 0
+warning: fa * fb > 0
+iterations: 0
+
+TEST 1
+warning: fa * fb > 0
+iterations: 0
+
+TEST 2
+warning: fa * fb > 0
+iterations: 0
+
+TEST 3
+answer: 0.00000000000000000000
+iterations: 4
+
+TEST 4
+answer: -0.00000000000000000000
+iterations: 101
 
 Not a number value

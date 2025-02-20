@@ -8,6 +8,9 @@ int main(void) {
     int i;
     int iterations = 0;
     double xn;
+    double(*f[])(double) = {f0, f1, f2, f3, f4}; // если функций другое количество, то надо это отметить здесь
+    double(*df[])(double) = {df0, df1, df2, df3, df4}; // если функций другое количество, то надо это отметить здесь
+    int err = 0;
 
     if((in = fopen("INPUT.txt", "r"))==NULL) {
         printf("INPUT.txt error\n");
@@ -27,11 +30,11 @@ int main(void) {
             fclose(in); fclose(out);
             return -2;
         }
-        if(eps <= 2e-16) {
+/*         if(eps <= 2e-16) {
             fprintf(out, "---------------------\n");
             fprintf(out, "eps less than machine epsilon (double)\n");
             continue;
-        }
+        } */
         if(fscanf(in, "%lf", &a) != 1){
             fprintf(out, "Not a number value\n");
             printf("The results are saved in OUTPUT.txt\n");
@@ -47,15 +50,16 @@ int main(void) {
         fprintf(out, "---------------------\n");
         fprintf(out, "INPUT: %lg, %lf, %lf\n", eps, a, b);
 
-        for(i = 1; i <= 5; i++) {
+        for(i = 0; i <= 4; i++) { // если функций другое количество, то надо это отметить здесь
             iterations = 0;
-            //xn = f(b, i) * ddf(b, i) > 0 ? b : a; // можно по-другому брать начальную точку
             xn = (b - a) / 2;
-            res = Newton(xn, eps, *f, *df, i, &iterations);
+            res = Newton(xn, eps, *f[i], *df[i], &iterations, &err);
 
             fprintf(out, "\nTEST %d\n", i);
             if(fabs(b - a) <= eps) fprintf(out, "warning: fabs(b - a) <= eps\n");
             if(res > b || res < a) fprintf(out, "warning: res > b or res < a\n");
+            if(err == 1) fprintf(out, "error: division by zero\n");
+            if(err == 2) fprintf(out, "error: the program looped\n");
             fprintf(out, "answer: %.20lf\n", res);
             fprintf(out, "iterations: %d\n", iterations);
         }

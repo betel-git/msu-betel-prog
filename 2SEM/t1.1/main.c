@@ -8,6 +8,7 @@ int main(void) {
     FILE *in, *out;
     int i;
     int iterations = 0;
+    double(*f[])(double) = {f0, f1, f2, f3, f4}; // если функций другое количество, то надо это отметить здесь
 
     if((in = fopen("INPUT.txt", "r"))==NULL) {
         printf("INPUT.txt error\n");
@@ -42,9 +43,9 @@ int main(void) {
         fprintf(out, "---------------------\n");
         fprintf(out, "INPUT: %lg, %lf, %lf\n", eps, a, b);
 
-        for(i = 1; i <= 5; i++) {
+        for(i = 0; i <= 4; i++) { // если функций другое количество, то надо это отметить здесь
             iterations = 0;
-            res = Bisection(a, b, eps, *f, &err, i, &iterations);
+            res = Bisection(a, b, eps, *f[i], &err, &iterations);
             fprintf(out, "\nTEST %d\n", i);
             if(err == 0) fprintf(out, "answer: %.20lf\n", res);
             else if(err == 1) fprintf(out, "warning: fa * fb > 0\n");

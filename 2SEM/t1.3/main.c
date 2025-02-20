@@ -8,6 +8,7 @@ int main(void) {
     FILE *in, *out;
     int i;
     int iterations = 0;
+    double(*f[])(double) = {f0, f1, f2, f3, f4};
 
     if((in = fopen("INPUT.txt", "r"))==NULL) {
         printf("INPUT.txt error\n");
@@ -42,14 +43,16 @@ int main(void) {
         fprintf(out, "---------------------\n");
         fprintf(out, "INPUT: %lg, %lf, %lf\n", eps, a, b);
 
-        for(i = 1; i <= 5; i++) {
+        for(i = 0; i <= 4; i++) {
             iterations = 0;
-            res = Secant(a, b, eps, *f, &err, i, &iterations);
+            res = Secant(a, b, eps, *f[i], &err, &iterations);
             fprintf(out, "\nTEST %d\n", i);
             if(err == 0) fprintf(out, "answer: %.20lf\n", res);
             else if(err == 1) fprintf(out, "warning: fa * fb > 0\n");
             else if(err == 2) fprintf(out, "warning: fabs(b - a) <= eps, but f(a) = 0 or f(b) = 0\n");
             else if(err == 3) fprintf(out, "warning: fabs(b - a) <= eps\n");
+            else if(err == 4) fprintf(out, "warning: the program looped\n");
+            else if(err == 5) fprintf(out, "warning: division by zero\n");
             fprintf(out, "iterations: %d\n", iterations);
         }
         fprintf(out, "\n");

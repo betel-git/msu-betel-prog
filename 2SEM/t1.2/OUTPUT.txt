@@ -1,67 +1,103 @@
 ---------------------
-INPUT: 4, 0.250000, 3.500000
+INPUT: 1e-10, -25.000000, -20.000000
+
+TEST 0
+answer: -23.02585092994045723458
+iterations: 30
 
 TEST 1
-warning: fabs(b - a) <= eps
-answer: 1.42788461538461541878
-iterations: 0
-
-TEST 2
-warning: fabs(b - a) <= eps
-answer: 1.08333333333333348136
-iterations: 0
-
-TEST 3
-warning: fabs(b - a) <= eps
 warning: res > b or res < a
-answer: 17.43488576780542231859
-iterations: 1
-
-TEST 4
-warning: fabs(b - a) <= eps
-answer: 2.50000000000000000000
-iterations: 0
-
-TEST 5
-warning: fabs(b - a) <= eps
-answer: 1.61813186813186815627
-iterations: 0
-
----------------------
-INPUT: 0.01, -1.000000, 2.000000
-
-TEST 1
-answer: 1.41421568627450988664
-iterations: 1
+error: the program looped
+answer: 6267903415.33407020568847656250
+iterations: 10001
 
 TEST 2
-answer: 0.01734152991583262290
-iterations: 10
+warning: res > b or res < a
+answer: 0.00010000000000000000
+iterations: 39
 
 TEST 3
 warning: res > b or res < a
-answer: -12.56637061435917424035
-iterations: 2
-
-TEST 4
-warning: res > b or res < a
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-answer: 1.61806970300120989137
-iterations: 2
-
----------------------
-INPUT: 1e-08, -1.000000, 2.000000
-
-TEST 1
-answer: 1.41421356237309514547
+answer: 3.14159265358979311600
 iterations: 3
 
+TEST 4
+warning: res > b or res < a
+answer: 0.00000000015298434219
+iterations: 57
+
+---------------------
+INPUT: 1e-10, 1.570796, 1.570796
+
+TEST 0
+warning: res > b or res < a
+answer: -23.02585092994045723458
+iterations: 28
+
+TEST 1
+warning: res > b or res < a
+error: the program looped
+answer: 6175487998.06493091583251953125
+iterations: 10001
+
 TEST 2
-answer: 0.00000001786424233840
-iterations: 44
+warning: res > b or res < a
+answer: 0.00010000000000000000
+iterations: 103
+
+TEST 3
+warning: res > b or res < a
+answer: 0.00000000000000000000
+iterations: 1
+
+TEST 4
+warning: res > b or res < a
+answer: 0.00000000019509221037
+iterations: 7
+
+---------------------
+INPUT: 1e-10, 0.000000, 3.500000
+
+TEST 0
+warning: res > b or res < a
+answer: -23.02585092994045723458
+iterations: 29
+
+TEST 1
+warning: res > b or res < a
+answer: 41367032.79268199205398559570
+iterations: 85
+
+TEST 2
+answer: 0.00010000000000006362
+iterations: 37
+
+TEST 3
+warning: res > b or res < a
+answer: 6.28318530717958623200
+iterations: 5
+
+TEST 4
+answer: 0.00000000016063355930
+iterations: 56
+
+---------------------
+INPUT: 1e-10, -1.000000, 2.000000
+
+TEST 0
+warning: res > b or res < a
+answer: -23.02585092994045723458
+iterations: 29
+
+TEST 1
+warning: res > b or res < a
+error: the program looped
+answer: 6158837719.81390857696533203125
+iterations: 10001
+
+TEST 2
+answer: 0.00010000000000000000
+iterations: 37
 
 TEST 3
 warning: res > b or res < a
@@ -69,115 +105,6 @@ answer: -12.56637061435917246399
 iterations: 3
 
 TEST 4
-warning: res > b or res < a
-answer: 2.50000000000000000000
-iterations: 1
+answer: 0.00000000013768590797
+iterations: 56
 
-TEST 5
-answer: 1.61803398874989468048
-iterations: 4
-
----------------------
-INPUT: 1e-05, -3.000000, 3.000000
-
-TEST 1
-answer: 1.41421356237311179882
-iterations: 4
-
-TEST 2
-answer: 0.00001564528515253969
-iterations: 29
-
-TEST 3
-warning: res > b or res < a
-answer: 3.14159265358979311600
-iterations: 2
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-answer: 1.61803398875023263237
-iterations: 6
-
----------------------
-INPUT: 1e-05, -100.000000, 100.000000
-
-TEST 1
-answer: 1.41421356237384010512
-iterations: 9
-
-TEST 2
-answer: 0.00001356565902572494
-iterations: 38
-
-TEST 3
-warning: res > b or res < a
-answer: 100.53096491487337971193
-iterations: 3
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-answer: 1.61803398874989512457
-iterations: 16
-
----------------------
-INPUT: 1e-05, 1.250000, 4.000000
-
-TEST 1
-answer: 1.41421356237309936432
-iterations: 2
-
-TEST 2
-warning: res > b or res < a
-answer: 0.00001613420031355655
-iterations: 27
-
-TEST 3
-warning: res > b or res < a
-answer: -3.14159265358979311600
-iterations: 4
-
-TEST 4
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-answer: 1.61803398875911441657
-iterations: 6
-
----------------------
-eps less than machine epsilon (double)
----------------------
-INPUT: 1.25, 4.000000, 0.010000
-
-TEST 1
-warning: res > b or res < a
-answer: -1.49875313283208022597
-iterations: 0
-
-TEST 2
-warning: res > b or res < a
-answer: -1.33000000000000007105
-iterations: 0
-
-TEST 3
-warning: res > b or res < a
-answer: -3.32248640329479805189
-iterations: 2
-
-TEST 4
-warning: res > b or res < a
-answer: 2.50000000000000000000
-iterations: 1
-
-TEST 5
-warning: res > b or res < a
-answer: -1.24700081450496558233
-iterations: 0
-
-Not a number value

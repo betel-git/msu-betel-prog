@@ -1,0 +1,238 @@
+---------------------
+INPUT: 1e-10, -1.000000, 0.000000
+
+Function 1
+answer: -0.000437620890541
+right answer: -0.000459697694132
+delta: 0.000022076803590
+n: 1048576
+
+Function 2
+answer: 0.746824132798158
+fuction has no F or F(b) - F(a) == 0
+delta: 0.746824132798158
+n: 65536
+
+Function 3
+answer: -0.993068528164189
+right answer: -0.993068528194401
+delta: 0.000000000030211
+n: 524288
+
+Function 4
+answer: -0.644981658306714
+right answer: -0.644981658316629
+delta: 0.000000000009915
+n: 524288
+
+Function 5
+answer: -0.459702070317645
+right answer: -0.459689425336455
+delta: -0.000012644981190
+n: 131072
+
+Function 6
+warning: iterations > 25
+answer: 1.570707190102965
+fuction has no F or F(b) - F(a) == 0
+delta: 1.570707190102965
+n: 134217728
+
+Function 7
+answer: 0.000526456595640
+right answer: 2.247691629352707
+delta: -2.247165172757067
+n: 2097152
+
+---------------------
+INPUT: 1e-15, 0.000000, 0.020000
+
+Function 1
+answer: 0.000591917938186
+right answer: 0.000000199993333
+delta: 0.000591717944853
+n: 8388608
+
+Function 2
+answer: 0.019997333653303
+fuction has no F or F(b) - F(a) == 0
+delta: 0.019997333653303
+n: 65536
+
+Function 3
+answer: 0.013250027473579
+right answer: 0.013250027473579
+delta: 0.000000000000000
+n: 4194304
+
+Function 4
+answer: 0.016354803914769
+right answer: 0.016354803914770
+delta: -0.000000000000001
+n: 4194304
+
+Function 5
+answer: 0.000205912512804
+right answer: 0.000209122785930
+delta: -0.000003210273126
+n: 1048576
+
+Function 6
+warning: iterations > 25
+answer: 0.020001333498886
+right answer: 0.020001333573390
+delta: -0.000000000074505
+n: 134217728
+
+Function 7
+answer: 0.000599103037583
+right answer: 0.894867723564924
+delta: -0.894268620527341
+n: 16777216
+
+---------------------
+INPUT: 1e-15, 3.000000, 6.000000
+
+Function 1
+warning: iterations > 25
+answer: -0.001879593710155
+right answer: -0.001950162783251
+delta: 0.000070569073095
+n: 134217728
+
+Function 2
+answer: 0.000019577193237
+fuction has no F or F(b) - F(a) == 0
+delta: 0.000019577193237
+n: 2097152
+
+Function 3
+answer: 3.000000000000000
+right answer: 3.000000000000000
+delta: -0.000000000000000
+n: 2
+
+Function 4
+warning: iterations > 25
+answer: -1.829727071625201
+right answer: -1.829727071624995
+delta: -0.000000000000205
+n: 134217728
+
+Function 5
+warning: iterations > 25
+answer: -1.950181579187770
+right answer: -1.950169252345680
+delta: -0.000012326842090
+n: 134217728
+
+Function 6
+answer: 0.000000000000000
+fuction has no F or F(b) - F(a) == 0
+delta: 0.000000000000000
+n: 2
+
+Function 7
+warning: iterations > 25
+answer: -0.000050804905171
+right answer: -0.011973036908035
+delta: 0.011922232002864
+n: 134217728
+
+---------------------
+INPUT: 1e-15, 0.950000, 0.999800
+
+Function 1
+answer: -0.000389720236438
+right answer: 0.000041212500206
+delta: -0.000430932736644
+n: 16777216
+
+Function 2
+answer: 0.019255005945805
+fuction has no F or F(b) - F(a) == 0
+delta: 0.019255005945805
+n: 262144
+
+Function 3
+answer: 0.049800000000000
+right answer: 0.049800000000000
+delta: 0.000000000000000
+n: 2
+
+Function 4
+answer: 0.024292611673494
+right answer: 0.024292611673493
+delta: 0.000000000000000
+n: 2097152
+
+Function 5
+answer: 0.041208603003588
+right answer: 0.041210032253277
+delta: -0.000001429249689
+n: 2097152
+
+Function 6
+warning: iterations > 25
+answer: 0.297560095943222
+right answer: 0.297560095943189
+delta: 0.000000000000033
+n: 134217728
+
+Function 7
+answer: -0.000137170322113
+right answer: -0.108572456656575
+delta: 0.108435286334462
+n: 16777216
+
+---------------------
+INPUT: 1e-15, 0.000000, 3.000000
+
+Function 1
+warning: iterations > 25
+answer: 0.001975682199804
+right answer: 0.001989992496600
+delta: -0.000014310296796
+n: 134217728
+
+Function 2
+warning: iterations > 25
+answer: 0.886207348259806
+fuction has no F or F(b) - F(a) == 0
+delta: 0.886207348259806
+n: 134217728
+
+Function 3
+warning: iterations > 25
+answer: 2.993068528195974
+right answer: 2.993068528194401
+delta: 0.000000000001573
+n: 134217728
+
+Function 4
+warning: iterations > 25
+answer: 2.084788317804159
+right answer: 2.084788317804474
+delta: -0.000000000000315
+n: 134217728
+
+Function 5
+warning: iterations > 25
+answer: 1.990012253422952
+right answer: 1.989994688500188
+delta: 0.000017564922763
+n: 134217728
+
+Function 6
+answer: 0.000000000000000
+fuction has no F or F(b) - F(a) == 0
+delta: 0.000000000000000
+n: 2
+
+Function 7
+warning: iterations > 25
+answer: 0.001048564394957
+right answer: 0.010912826235169
+delta: -0.009864261840212
+n: 134217728
+

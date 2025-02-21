@@ -68,7 +68,7 @@ double F7(double x) {
 
 // Вычисление интеграла методом Гаусса с 2 точками для n подынтервалов
 double GaussInt(double a, double b, int *n, double(*f)(double)) {
-    const double sqrt3 = 1.0 / sqrt(3); // 1/√3 ≈ 0.57735
+    const double sqrt3 = 1.0 / sqrt(3);
     double xi, x1, x2;
     double h = (b - a) / *n;
     double sum = 0.0;
@@ -94,7 +94,6 @@ double Integral(double a, double b, double eps, int *n, int *err, double(*f)(dou
     *n *= 2;
     current = GaussInt(a, b, n, f);
     
-    // Удваиваем число интервалов до достижения точности
     while (fabs(current - prev) > eps) {
         if (i > 25) {
             *err = -1;

@@ -1,0 +1,10 @@
+---------------------
+INPUT: 1e-15, -1.000000, 1.000000
+
+Function 1
+answer: -nan
+right answer: 0.666666666666667
+delta: -nan
+n: 0
+
+Not a number value

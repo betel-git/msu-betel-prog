@@ -1,11 +1,13 @@
 #include "headers.h"
 
 double f1(double x) {
-    return sin(1000 * x);
+    //return sin(1000 * x);
+    return x * x;
 }
 
 double F1(double x) {
-    return -0.001 * cos(x);
+    //return -0.001 * cos(x);
+    return x * x * x / 3;
 }
 
 
@@ -91,15 +93,17 @@ double Integral(double a, double b, double eps, int *n, int *err, double(*f)(dou
     while (fabs(current - prev) > eps) {
         if (i > 25) {
             *err = -1;
-            return current;
+            //return current;
         }
         i++;
         prev = current;
         *n *= 2;
         current = RectangleInt(a, b, n, f);
-        printf("%d\n", *n);
+        printf("%.20lf\n", current);
+        //printf("%d\n", *n);
     }
     printf("\n");
+    printf("%.20lf\n", current);
     *err = 0;
     return current;
 }

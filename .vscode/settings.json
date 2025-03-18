@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "4.C": "cpp"
+        "4.C": "cpp",
+        "cmath": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

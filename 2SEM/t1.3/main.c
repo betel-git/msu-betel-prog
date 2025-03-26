@@ -2,7 +2,7 @@
 
 int main(void) {
     double x1 = -10.0, x3 = 13.0;
-    double eps = 1e-10;
+    double eps = 1e-15;
     int iter = 0;
     double err = 0;
     double x_min, f_min;
@@ -17,7 +17,7 @@ int main(void) {
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
         printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
-        printf("err = %le\n", err);
+        if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }
 
@@ -29,7 +29,7 @@ int main(void) {
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
         printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
-        printf("err = %le\n", err);
+        if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }
 
@@ -41,7 +41,7 @@ int main(void) {
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
         printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
-        printf("err = %le\n", err);
+        if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }
 

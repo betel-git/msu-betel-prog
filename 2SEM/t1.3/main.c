@@ -16,7 +16,7 @@ int main(void) {
         if (iter >= 100) printf("%d) error\n", i);
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
-        printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
+        printf("x = %.15le, f(x) = %.15lf\n", 0.5 - x_min, f_min);
         if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }
@@ -28,7 +28,7 @@ int main(void) {
         if (iter >= 100) printf("%d) error\n", i);
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
-        printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
+        printf("x = %.15le, f(x) = %.15lf\n", 0.5 - x_min, f_min);
         if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }
@@ -40,7 +40,7 @@ int main(void) {
         if (iter >= 100) printf("%d) error\n", i);
         else printf("%d) success\n", i);
         printf("iter = %d\n", iter);
-        printf("x = %.15le, f(x) = %.15le\n", x_min, f_min);
+        printf("x = %.15le, f(x) = %.15lf\n", 0.5 - x_min, f_min);
         if (err >= 1e-25) printf("err = %le\n", err);
         printf("-----------------\n");
     }

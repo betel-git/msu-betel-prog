@@ -12,5 +12,6 @@ double f2 (double x) {
 
 
 double f3 (double x) {
-    return (x - 2.5) * (x - 2.5) * (x - 2.5) * (x - 2.5) + 3 * (x - 1) * (x - 1); // x = 1.5577 fx = 1.7215
+    //return (x - 2.5) * (x - 2.5) * (x - 2.5) * (x - 2.5) + 3 * (x - 1) * (x - 1); // x = 1.5577 fx = 1.7215
+    return exp(sqrt(x * x - x + 3));
 }

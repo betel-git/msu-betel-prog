@@ -31,7 +31,8 @@ int MaxNumberLength(int **matrix, int rows, int cols) {
 // Функция для обработки матрицы
 void BitMatrix(int **matrix, int rows, int *cols, int M, int N) {
     // Создаем массив для отметки столбцов, которые нужно сохранить
-    bool *keep_column = (bool *)malloc(*cols * sizeof(bool));
+    bool *keep_column1 = (bool *)malloc(*cols * sizeof(bool)); // массив для отметки столбцов, с элементами с нулевым M битом
+    bool *keep_column2 = (bool *)malloc(*cols * sizeof(bool)); // массив для отметки столбцов с элементами с ненулевым M битом
     int new_cols = 0;
     bool all_zero;
     int i, j;
@@ -45,19 +46,20 @@ void BitMatrix(int **matrix, int rows, int *cols, int M, int N) {
         all_zero = true;
         for (i = 0; i < rows; i++) {
             if (!CheckBit(matrix[i][j], M)) {
-                all_zero = false;
+                all_zero = false; // M-й бит != 0
                 break;
             }
         }
-        keep_column[j] = all_zero;
+        keep_column1[j] = all_zero;
+        keep_column2[j] = !all_zero;
     }
     
     // Второй проход: обрабатываем группы последовательных столбцов
     for (j = 0; j < *cols; j++) {
-        if (keep_column[j]) {
+        if (keep_column1[j]) {
             current_group_size++;
             if (current_group_size > N) {
-                keep_column[j] = false;
+                keep_column1[j] = false;
             }
         } else {
             current_group_size = 0;
@@ -67,10 +69,11 @@ void BitMatrix(int **matrix, int rows, int *cols, int M, int N) {
     // Подсчитываем количество столбцов для новой матрицы
     new_cols = 0;
     for (j = 0; j < *cols; j++) {
-        if (keep_column[j] || !CheckBit(matrix[0][j], M)) {
+        if (keep_column1[j] || keep_column2[j] /*!CheckBit(matrix[0][j], M)*/) {
             new_cols++;
         }
     }
+    //printf("new_cols = %d\n", new_cols);
     
     // Создаем новую матрицу
     new_matrix = (int **)malloc(rows * sizeof(int *));
@@ -78,8 +81,9 @@ void BitMatrix(int **matrix, int rows, int *cols, int M, int N) {
         new_matrix[i] = (int *)malloc(new_cols * sizeof(int));
         new_j = 0;
         for (j = 0; j < *cols; j++) {
-            if (keep_column[j] || !CheckBit(matrix[i][j], M)) {
-                new_matrix[i][new_j++] = matrix[i][j];
+            if (keep_column1[j] || keep_column2[j]) {
+                new_matrix[i][new_j] = matrix[i][j];
+                new_j++;
             }
         }
     }
@@ -93,7 +97,8 @@ void BitMatrix(int **matrix, int rows, int *cols, int M, int N) {
     // Заменяем старую матрицу новой
     matrix = new_matrix;
     *cols = new_cols;
-    free(keep_column);
+    free(keep_column1);
+    free(keep_column2);
     
     // Определяем максимальную длину числа для форматирования
     num_width = MaxNumberLength(new_matrix, rows, new_cols) + 1;

@@ -86,3 +86,12 @@ double **MatrixMultiplication (double **a, double **b, int m1, int n1, int m2, i
     }
     return res;
 }
+
+// умножение всех элементов на константу
+void ConstMultiplication (double **a, int rows, int cols, double c) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            a[i][j] *= c;
+        }
+    }
+}

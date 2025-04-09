@@ -1,5 +1,6 @@
 #include "headers.h"
 
+// процедура приведения матрицы к ступенчатому виду методом Гаусса
 void GaussianElimination (double **a, int rows, int cols, double eps) {
     int i, j, k, lead = 0;
     double temp, div, mult, norm = 0, sum;
@@ -21,6 +22,7 @@ void GaussianElimination (double **a, int rows, int cols, double eps) {
     // находит погрешность
     if (rows > cols) eps = eps * rows;
     else eps = eps * cols;
+    fprintf(stdout, "new eps = %le\n", eps);
 
     // непосредственно метод Гаусса
     for (j = 0; j < rows; j++) {
@@ -63,7 +65,7 @@ void GaussianElimination (double **a, int rows, int cols, double eps) {
     }
 }
 
-
+// процедура поиска ранга матрицы
 int Rank (double **a, int rows, int cols, double eps) {
     int res = 0, check = 0;
     for (int i = 0; i < rows; i++) {
@@ -80,7 +82,7 @@ int Rank (double **a, int rows, int cols, double eps) {
     return res;
 }
 
-
+// процедура поиска определителя матрицы
 double Determinant (double **a, int rows, int cols, double eps) {
     int i, j, k, lead = 0;
     double temp, div, mult, norm = 0, sum, det = 1;
@@ -106,6 +108,7 @@ double Determinant (double **a, int rows, int cols, double eps) {
     // находит погрешность
     if (rows > cols) eps = eps * rows;
     else eps = eps * cols;
+    fprintf(stdout, "new eps = %le\n", eps);
 
     // непосредственно метод Гаусса
     for (j = 0; j < rows; j++) {
@@ -162,7 +165,7 @@ void Solver(double **a, double *x, int n) {
     }
 }
 
-
+// метод Гаусса + обратный ход = процедура нахождения обратной матрицы
 double **GaussianPlusInverse (double **a, int rows, int cols, double eps) {
     double **b;
     int i, j, k, lead = 0;
@@ -195,6 +198,7 @@ double **GaussianPlusInverse (double **a, int rows, int cols, double eps) {
     // находит погрешность
     if (rows > cols) eps = eps * rows;
     else eps = eps * cols;
+    fprintf(stdout, "new eps = %le\n", eps);
 
     // непосредственно метод Гаусса
     for (j = 0; j < rows; j++) {

@@ -22,5 +22,8 @@ void TestRank (FILE *in, double eps, int *err);
 void TestDet (FILE *in, double eps, int *err);
 void TestSolver (FILE *in, double eps, int *err);
 void TestInverse (FILE *in, double eps, int *err);
+double **TestDet1 (int n, int c, int d);
+double **TestInv1 (int n);
+double **TestHilbert (int n);
 
 #endif

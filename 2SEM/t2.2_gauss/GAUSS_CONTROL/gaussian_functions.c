@@ -99,16 +99,16 @@ double Determinant (double **a, int rows, int cols, double eps) {
         if (sum > norm) norm = sum;
     }
     // делит все элементы на норму матрицы
-    for (j = 0; j < cols; j++) {
+    /*for (j = 0; j < cols; j++) {
         for (i = 0; i < rows; i++) {
             a[i][j] /= norm;
         }
         det *= norm; // умножает определитель на норму
-    }
+    }*/
     // находит погрешность
     if (rows > cols) eps = eps * rows;
     else eps = eps * cols;
-    fprintf(stdout, "new eps = %le\n", eps);
+    //fprintf(stdout, "new eps = %le\n", eps);
 
     // непосредственно метод Гаусса
     for (j = 0; j < rows; j++) {

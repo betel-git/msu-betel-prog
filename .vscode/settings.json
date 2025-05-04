@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "4.C": "cpp",
-        "cmath": "c"
+        "cmath": "c",
+        "headers.h": "c",
+        "*.tcc": "c",
+        "string": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,4 +1,0 @@
-Найденные файлы (3):
-file.txt
-something.txt
-else.txt

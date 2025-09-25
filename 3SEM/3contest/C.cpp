@@ -14,6 +14,16 @@ struct BST {
     Node* root;
 
     BST () {root = nullptr;}
+    ~BST() {
+        _clear(root);
+    }
+
+    void _clear(Node* v) {
+        if (v == nullptr) return;
+        _clear(v->l);
+        _clear(v->r);
+        delete v;
+    }
     
     int _find(Node* v, int x) {
         if (v == nullptr) return 0;
@@ -57,8 +67,8 @@ struct BST {
         }
         if (v->id == x) {
             removed = true;
-		    Node* l = v -> l;
-		    Node* r = v -> r;
+		    Node* l = v->l;
+		    Node* r = v->r;
 		    delete v;
 		    return _merge(l, r);
         }
@@ -68,12 +78,9 @@ struct BST {
     Node* _merge (Node* l, Node* r) {
         if (l == nullptr) {return r;}
         if (r == nullptr) {return l;}
-        //l -> l = _merge(l -> l, l -> r);
-        //l -> r = r;
-        l -> r = _merge(l -> r, r);
+        l->r = _merge(l->r, r);
         return l;
     }
-
 
     
     int find(int x) {
@@ -95,8 +102,8 @@ struct BST {
 
 
 int main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(0);
+    //std::ios_base::sync_with_stdio(false);
+    //std::cin.tie(0);
     //int q, n, x;
     int q;
     cin >> q;

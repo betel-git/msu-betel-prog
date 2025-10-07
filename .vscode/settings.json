@@ -4,7 +4,13 @@
         "cmath": "c",
         "headers.h": "c",
         "*.tcc": "c",
-        "string": "c"
+        "string": "c",
+        "random": "c",
+        "new": "cpp",
+        "deque": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "functional": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

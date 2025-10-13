@@ -250,7 +250,7 @@ void TestLowerBoundCornerCases () {
     
     // Тест на пустом дереве
     int result = treap.lower_bound(228);
-    cout << "Пустое дерево, lower_bound(42) = " 
+    cout << "Пустое дерево, lower_bound(228) = " 
                 << (result == INT_MAX ? "INT_MAX" : std::to_string(result)) 
                 << " (ожидается INT_MAX)" << endl;
     
@@ -488,14 +488,26 @@ int main() {
     std::string str;
     cin >> str;
     if (str == "NO") return 0;
-    
+
     Treap treap;
     int n, in;
     cout << "Введите число элементов: ";
     cin >> n;
     for (int i = 0; i < n; i++) {
-        cin >> in;
-        treap.insert(in);
+        int type;
+        cin >> type;
+        if (type == 1) {
+            cin >> in;
+            treap.insert(in);
+        }
+        else if (type == 2) {
+            cin >> in;
+            treap.erase(in);
+        }
+        else {
+            cin >> in;
+            cout << treap.search(in) << endl;
+        }
     }
     treap.print();
     return 0;

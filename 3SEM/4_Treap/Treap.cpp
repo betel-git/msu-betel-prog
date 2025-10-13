@@ -10,6 +10,7 @@
 #include <ctime>
 using std::pair;
 using std::cout;
+using std::cin;
 using std::endl;
 using std::sort;
 
@@ -126,7 +127,7 @@ struct Treap {
     }
 
     int _kth_order_statistic (Node* v, int k) {
-        if (v == nullptr || k < 0 || k > size()) {
+        if (v == nullptr || k < 0 || k >= v->size) {
             return INT_MAX;
         }
         
@@ -201,7 +202,7 @@ struct Treap {
 //===================================================================================
 
 // Тест на корректность вставки и удаления
-void test_insert_erase_sequence (int n) {
+void TestInsertEraseSequence (int n) {
     srand(time(NULL));
     cout << "\n=== ТЕСТ: Последовательность вставок и удалений ===" << endl;
     
@@ -242,7 +243,7 @@ void test_insert_erase_sequence (int n) {
 }
 
 // Тест lower_bound на специальных случаях
-void test_lower_bound_corner_cases () {
+void TestLowerBoundCornerCases () {
     cout << "\n=== ТЕСТ: Граничные случаи lower_bound ===" << endl;
     
     Treap treap;
@@ -283,7 +284,7 @@ void test_lower_bound_corner_cases () {
 }
 
 // Тест на повторяющиеся операции
-void test_duplicate_operations () {
+void TestDuplicateOperations () {
     cout << "\n=== ТЕСТ: Повторяющиеся операции ===" << std::endl;
     
     Treap treap;
@@ -308,7 +309,7 @@ void test_duplicate_operations () {
 }
 
 // Тест на большой объем данных
-void stress_test_1 (int n, int a, int b) {
+void StressTest1 (int n, int a, int b) {
     cout << "\n=== ТЕСТ: Большой объем данных (" << n << " элементов, (a,b) = (" << a << ", " << b <<  ")) ===" << endl;
     
     Treap treap;
@@ -362,7 +363,7 @@ void stress_test_1 (int n, int a, int b) {
 }
 
 
-void test_order_statistics () {
+void TestOrderStatistics () {
     cout << "\n=== ТЕСТИРОВАНИЕ ПОРЯДКОВОЙ СТАТИСТИКИ ===" << endl;
     
     Treap treap;
@@ -385,7 +386,7 @@ void test_order_statistics () {
     for (int k = 0; k < (int)lst.size(); k++) {
         int a = lst[k];
         int b = treap.kth_order_statistic(k);
-        cout << "k =" << k << ": ожидается " << a << ", получено " << b;
+        cout << "k = " << k << ": ожидается " << a << ", получено " << b;
         cout << (a == b ? " ПРОЙДЕНО" : " НЕ ПРОЙДЕНО") << endl;
     }
     cout << endl;
@@ -399,7 +400,7 @@ void test_order_statistics () {
         }
         int c = treap.count_less_than(test_values[i]);
         
-        cout << "x =" << test_values[i] << ": ожидается " << expected 
+        cout << "x = " << test_values[i] << ": ожидается " << expected 
              << ", получено " << c << endl;
     }
     cout << endl;
@@ -412,7 +413,7 @@ void test_order_statistics () {
 }
 
 
-void stress_test_2 () {
+void StressTest2 () {
     cout << "\n=== СТРЕСС-ТЕСТ ДЛЯ ВТОРОЙ ЗАДАЧИ ===" << endl;
     
     Treap treap;
@@ -436,7 +437,7 @@ void stress_test_2 () {
         int a = lst[k];
         int b = treap.kth_order_statistic(k);
         if (a != b) {
-            cout << "Ошибка порядковой статистики при k =" << k << ": ожидается " << a << ", получено " << b << endl;
+            cout << "Ошибка порядковой статистики при k = " << k << ": ожидается " << a << ", получено " << b << endl;
             cout << "Отрезок, на котором ошибка: " << lst[k - 1] << " " << lst[k] << " " << lst[k + 1] << endl;
             all_correct = false;
             break;
@@ -457,7 +458,7 @@ void stress_test_2 () {
         }
         int b = treap.count_less_than(x);
         if (a != b) {
-            cout << "Ошибка подсчёта мешьших чисел при x=" << x << ": ожидается " << a << ", получено " << b << endl;
+            cout << "Ошибка подсчёта мешьших чисел при x = " << x << ": ожидается " << a << ", получено " << b << endl;
             all_correct = false;
             break;
         }
@@ -472,14 +473,30 @@ void stress_test_2 () {
 
 
 int main() {
-    test_insert_erase_sequence(1000000);
-    test_lower_bound_corner_cases();
-    void test_duplicate_operations();
-    stress_test_1(10000, -10000, 10000);
-    stress_test_1(100000, -10000, 10000);
-    stress_test_1(1000000, -10000, 10000);
-    stress_test_1(10000000, -100000, 100000);
-    test_order_statistics();
-    stress_test_2();
+    TestInsertEraseSequence(1000000);
+    TestLowerBoundCornerCases();
+    void TestDuplicateOperations();
+    StressTest1(10000, -10000, 10000);
+    StressTest1(100000, -10000, 10000);
+    StressTest1(1000000, -10000, 10000);
+    StressTest1(10000000, -100000, 100000);
+    TestOrderStatistics();
+    StressTest2();
+
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Хотите получить своё декартово дерево? (YES / NO)" << endl;
+    std::string str;
+    cin >> str;
+    if (str == "NO") return 0;
+    
+    Treap treap;
+    int n, in;
+    cout << "Введите число элементов: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> in;
+        treap.insert(in);
+    }
+    treap.print();
     return 0;
 }

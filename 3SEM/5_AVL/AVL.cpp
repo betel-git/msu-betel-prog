@@ -20,7 +20,7 @@ struct Node {
     Node* l;
     Node* r;
     int h;
-    Node () {l = r = nullptr;}
+    Node () = default;
     Node (int x) {
         id = x;
         h = 1;
@@ -32,9 +32,9 @@ struct Node {
 struct AVL {
     Node* root;
     AVL () {root = nullptr;}
-    ~AVL () {clear(root);};
+    ~AVL () {clear(root);}
 
-    Node* _insert (Node* v, int x) {
+    Node* _insert (Node* v, int x) { // как в BST + балансировка
         if (v == nullptr) {
             Node* nnode = new Node();
             nnode->id = x;
@@ -50,32 +50,32 @@ struct AVL {
         return balance(v);
     }
 
-    Node* _erase(Node* v, int x) {
+    Node* _erase (Node* v, int x) {
         if (!v) return nullptr;
 
         if (x < v->id)
             v->l = _erase(v->l, x);
         else if (x > v->id)
             v->r = _erase(v->r, x);
-        else {
-            if (!v->l || !v->r) {
+        else { // нашли элемент, который хотим удалить
+            if (!v->l || !v->r) { // 1 или 0 потомков
                 Node* temp = v->l ? v->l : v->r;
-                if (!temp) {
+                if (!temp) { // нет потомков
                     temp = v;
                     v = nullptr;
-                } else {
-                    *v = *temp;
                 }
+                else *v = *temp; // один потомок
                 delete temp;
             } 
-            else {
+            else { // 2 потомка
+                // нам надо найти элемент с как можно более близким значением к x
+                // находим минимум в правом поддереве — это и будет нужный элемент
                 Node* temp = _find_min(v->r);
                 v->id = temp->id;
                 v->r = _erase(v->r, temp->id);
             }
         }
 
-        if (!v) return nullptr;
         return balance(v);
     }
 
@@ -101,10 +101,7 @@ struct AVL {
     }
 
     int diff (Node* v) {
-        if (v) {
-            return height(v->l) - height(v->r);
-        }
-        return 0;
+        return v ? height(v->l) - height(v->r) : 0;
     }
 
     Node* rotate_left (Node* v) {
@@ -118,7 +115,7 @@ struct AVL {
         return w;
     }
 
-    Node* rotate_right (Node *v) {
+    Node* rotate_right (Node* v) {
         if (!v || !v->r) return v;
         Node* w = v->l;
         v->l = w->r;
@@ -129,37 +126,37 @@ struct AVL {
         return w;
     }
 
-    Node* big_rotate_left (Node *v) {
+    Node* big_rotate_left (Node* v) {
         if (!v) return nullptr;
         v->r = rotate_right(v->r);
         return rotate_left(v);
     }
 
-    Node* big_rotate_right (Node *v) {
+    Node* big_rotate_right (Node* v) {
         if (!v) return nullptr;
         v->l = rotate_left(v->l);
         return rotate_right(v);
     }
 
-    Node* balance(Node *v) {
+    Node* balance (Node* v) {
         if (!v) return nullptr;
         upd_height(v);
-        if (diff(v) == -2) {
-            if (diff(v->r) <= 0) {
+        if (diff(v) == -2) { // правое поддерево тяжелее
+            if (diff(v->r) <= 0) { // правое поддерево правого поддерева тяжелее
                 return rotate_left(v);
             }
-            return big_rotate_left(v);
+            return big_rotate_left(v); // левое поддерево правого поддерева тяжелее
         }
-        if (diff(v) == 2) {
-            if (diff(v->l) >= 0) {
+        if (diff(v) == 2) { // левое поддерево тяжелее
+            if (diff(v->l) >= 0) { // левое поддерево левого поддерева тяжелее
                 return rotate_right(v);
             }
-            return big_rotate_right(v);
+            return big_rotate_right(v); // правое поддерево левого поддерева тяжелее
         }
         return v;
     }
 
-    void clear(Node* v) {
+    void clear (Node* v) {
         if (v) {
             clear(v->l);
             clear(v->r);
@@ -176,7 +173,7 @@ struct AVL {
 };
 
 
-long long int StressTest (int n) {
+int StressTest (long long int n) {
     Treap t1;
     AVL t2;
     vector<int> lst;
@@ -199,7 +196,8 @@ long long int StressTest (int n) {
             int x;
             if (lst.empty()) {
                 x = rd() % (int)pow(10, 8);
-            } else {
+            } 
+            else {
                 x = (rd() % 2) ? rd() % (int)pow(10, 8) : lst[rd() % lst.size()];
             }
             if (t1.search(x) != t2.search(x)) {
@@ -216,14 +214,19 @@ long long int StressTest (int n) {
 int main() {
     long long int m;
     int q;
-    cout << "Введите количество операций (дальше 10^7 слишком долго): " << endl;
+    cout << "Введите количество операций (дальше 10^7 слишком долго): ";
     cin >> m;
     cout << "Сколько раз повторить тест?" << endl;
     cin >> q;
-    for (int i = 0; i < q; i++) StressTest(m);
+    for (int i = 0; i < q; i++) {
+        auto start = std::clock();
+        StressTest(m);
+        auto time = std::clock() - start;
+        cout << (double)time / CLOCKS_PER_SEC << " сек" << endl;
+    }
 
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "Хотите получить своё АВЛ-дерево? (YES / NO)" << endl;
+    cout << "Хотите получить своё АВЛ-дерево? (YES / NO): ";
     std::string str;
     cin >> str;
     if (str == "NO") return 0;

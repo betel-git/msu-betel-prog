@@ -18,8 +18,8 @@ std::mt19937 rd(time(NULL));
 
 template<typename T>
 struct HashTableClose {
-    using Bucket = vector<pair<string, T>>; // чтобы постоянно не писать эту большую штуку
-    vector<Bucket> table;
+    using VPST = vector<pair<string, T>>; // чтобы постоянно не писать эту большую штуку
+    vector<VPST> table;
     int els = 0; // это количество элементов
     int size; // а это размер таблицы, т.е. её ёмкость
 
@@ -28,7 +28,7 @@ struct HashTableClose {
         table.resize(size);
     }
 
-    ~HashTableClose() = default;
+    ~HashTableClose () = default;
 
     int PolyHash (const string& key) {
         int x = 37;
@@ -48,9 +48,9 @@ struct HashTableClose {
     void rehash () {
         int new_size = size * 2;
         int old_size = size;
-        std::vector<Bucket> new_table(new_size);
+        std::vector<VPST> new_table(new_size);
         
-        std::vector<Bucket> old_table = std::move(table);
+        std::vector<VPST> old_table = std::move(table);
         size = new_size;
         table = std::move(new_table);
         els = 0;
@@ -62,7 +62,7 @@ struct HashTableClose {
                 const string& key = old_table[i][j].first;
                 const T& val = old_table[i][j].second;
                 int id = PolyHash(key);
-                Bucket& bucket = table[id];
+                VPST& bucket = table[id];
 
                 int found = 0;
                 for (int k = 0; k < (int)bucket.size(); k++) {
@@ -86,7 +86,7 @@ struct HashTableClose {
             rehash();
         }
         int id = PolyHash(key);
-        Bucket& bucket = table[id];
+        VPST& bucket = table[id];
         
         for (int i = 0; i < (int)bucket.size(); i++) {
             if (bucket[i].first == key) {
@@ -94,17 +94,19 @@ struct HashTableClose {
                 return;
             }
         }
-        pair<string, T> megapair;
+        // здесь я просто ещё не знал про emplace_back
+/*         pair<string, T> megapair;
         megapair.first = key;
         megapair.second = val;
-        bucket.push_back(megapair);
+        bucket.push_back(megapair); */
+        bucket.emplace_back(key, val);
         ++els;
     }
 
     int search (const string& key, T& val) {
         if (els == 0) return 0;
         int id = PolyHash(key);
-        Bucket& bucket = table[id];
+        VPST& bucket = table[id];
 
         for (int i = 0; i < (int)bucket.size(); i++) {
             if (bucket[i].first == key) {
@@ -118,7 +120,7 @@ struct HashTableClose {
     void erase (const string& key) {
         if (els == 0) return;
         int id = PolyHash(key);
-        Bucket& bucket = table[id];
+        VPST& bucket = table[id];
 
         for (int i = 0; i < (int)bucket.size(); i++) {
             if (bucket[i].first == key) {
@@ -138,7 +140,7 @@ struct HashTableClose {
 template <typename T>
 struct HashTableOpen {
     vector<pair<string, T>> table;
-    vector<int> states;
+    vector<int> states; // 1 - занята, 0 - пуста, -1 - удалена
     int els = 0;
     int size;
 
@@ -167,9 +169,9 @@ struct HashTableOpen {
     int FindIndex (const string& key, bool forInsert = false) {
         int id = PolyHash(key);
         int firstDeleted = -1;
-        int probes = 0;
+        int i = 0;
 
-        while (probes != size) {
+        while (i != size) {
             if (states[id] == 0) { // нашли пустую ячейку
                 if (forInsert && firstDeleted != -1) {
                     return firstDeleted;
@@ -188,7 +190,7 @@ struct HashTableOpen {
             
             // линейное пробирование
             id = (id + 1) % size;
-            probes++;
+            i++;
         } 
         
         return forInsert ? firstDeleted : -1;
@@ -209,9 +211,9 @@ struct HashTableOpen {
             if (old_states[i] == 1) {
                 const string& key = old_table[i].first;
                 int id = PolyHash(key);
-                int probes = 0;
+                int j = 0;
                 
-                while (probes < size) {
+                while (j < size) {
                     if (states[id] == 0) {
                         table[id] = old_table[i];
                         states[id] = 1;
@@ -219,7 +221,7 @@ struct HashTableOpen {
                         break;
                     }
                     id = (id + 1) % size;
-                    probes++;
+                    j++;
                 }
             }
         }
@@ -251,7 +253,7 @@ struct HashTableOpen {
     int search (const string& key, T& val) {
         if (els == 0) return 0;
         
-        int id = FindIndex(key, false);
+        int id = FindIndex(key);
         if (id != -1 && states[id] == 1 && table[id].first == key) {
             val = table[id].second;
             return 1;
@@ -262,7 +264,7 @@ struct HashTableOpen {
     void erase (const string& key) {
         if (els == 0) return;
         
-        int id = FindIndex(key, false);
+        int id = FindIndex(key);
         if (id != -1 && states[id] == 1 && table[id].first == key) {
             states[id] = -1;
             table[id].first = "";
@@ -276,7 +278,7 @@ struct HashTableOpen {
 string RandStr () {
     string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     string rand_str;
-    int str_len = rd() % 10 + 1;
+    int str_len = rd() % 10 + 1; // здесь можно выбрать нужную длину строки
 
     for (int i = 0; i < str_len; i++) {
         int rand_ind = rd() % alphabet.length();
@@ -294,7 +296,7 @@ void StressTest (int n) {
     
     for (int i = 0; i < n; i++) {
         int typ = rd() % 3;
-        if (typ == 0) {
+        if (typ == 0) { // вставка
             int x = rd() % (int)pow(10, 4);
             string str = RandStr();
             ht.insert(str, x);
@@ -305,14 +307,14 @@ void StressTest (int n) {
             lst.push_back(megapair);
             cout << i << ") " << typ << " " << str << " " << x << endl;
         }
-        if (typ == 1 && !lst.empty()) {
+        if (typ == 1 && !lst.empty()) { // удаление
             std::swap(lst[rd() % lst.size()], lst.back());
             ht.erase(lst.back().first);
             ht2.erase(lst.back().first);
             cout << i << ") " << typ << " " << lst.back().first << endl;
             lst.pop_back();
         }
-        if (typ == 2) {
+        if (typ == 2) { // поиск
             string x;
             int val, val2;
             if (lst.empty()) {

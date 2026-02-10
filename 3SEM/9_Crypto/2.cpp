@@ -1,4 +1,4 @@
-// реализовать протокол Диффи-Хеллмана
+// DIFFIE-HELLMAN KEY EXCHANGE PROTOCOL
 #include "crypto.h"
 const int p = 1000000007;
 std::mt19937 rd(time(NULL));
@@ -47,7 +47,6 @@ int main() {
     cout << "Открытый ключ Алисы: " << alice_open << endl;
     cout << "Открытый ключ Боба: " << bob_open << endl;
     
-    // Сообщение для передачи
     ll message;
     cout << "Введите сообщение, которое Алиса передаст Бобу:" << endl;
     cin >> message;

@@ -6,6 +6,7 @@ ll tonelli_shanks (ll a, ll p) {
     if (a == 0) return 0;
     if (legendre(a, p) != 1) return -1;
 
+    // раскладываем p - 1 на произведение нечётного числа и 2 в какой-то степени
     ll Q = p - 1;
     ll S = 0;
     while (Q % 2 == 0) {
@@ -13,8 +14,9 @@ ll tonelli_shanks (ll a, ll p) {
         Q /= 2;
     }
 
-    if (S == 1) return fast_pow(a, (p - 1) / 4, p);
+    if (S == 1) return fast_pow(a, (p - 1) / 4, p); // тогда p=3(mod 4)
 
+    // ищем невычет
     ll z = 2;
     while (legendre(z, p) != -1) z++;
 

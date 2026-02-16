@@ -7,7 +7,7 @@ int total = 0;
 
 void *Timer(void *arg)
 {
-    for (int i=0; i < 30; i++) {
+    for (int i=0; i < 20; i++) {
         total = i;
         printf("timer %d\n", i);
         sleep(1);

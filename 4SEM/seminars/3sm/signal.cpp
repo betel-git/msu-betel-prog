@@ -8,7 +8,7 @@ int total = 0;
 pthread_mutex_t  m = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t  c = PTHREAD_COND_INITIALIZER;
 
-void *Progress(void *arg)              
+void *Progress(void *)              
 {
     int r;
     bool a = true;
@@ -22,7 +22,7 @@ void *Progress(void *arg)
     return NULL;
 }
 
-void *HardWork(void *arg)
+void *HardWork(void *)
 {
     int r;
     for (int i=0; i<=100; i++) {

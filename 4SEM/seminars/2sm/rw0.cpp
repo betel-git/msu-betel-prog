@@ -11,7 +11,7 @@ pthread_mutex_t mut_write = PTHREAD_MUTEX_INITIALIZER;
 char text[TEXT_LEN];              //  общий буфер для обмена текстами
                                                    
 
-void *Reader(void *arg)
+void *Reader(void *)
 {
     int ret;
     char buf[TEXT_LEN];   // внутренний буфер читателя
@@ -39,7 +39,7 @@ void *Reader(void *arg)
     return NULL;
 }
 
-void *Writer(void * arg)
+void *Writer(void *)
 {
     int cnt = 0, ret;
     char buf[TEXT_LEN];

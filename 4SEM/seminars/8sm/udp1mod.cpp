@@ -11,7 +11,7 @@
 #include <sys/time.h>
 
 #define  PORT_OTHER     5550
-#define  PORT_THIS      5555
+#define  PORT_THIS      0
 #define  BUFLEN         512
 char     buf[BUFLEN];
 

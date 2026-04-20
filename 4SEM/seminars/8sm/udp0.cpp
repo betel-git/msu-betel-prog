@@ -10,7 +10,7 @@
 #include <string.h>
 #include <sys/time.h>
 
-#define  PORT_THIS      5550
+#define  PORT_THIS      5550 // номер порта выбирается самостоятельно
 #define  BUFLEN         512
 char     buf[BUFLEN];
 
@@ -48,6 +48,7 @@ int main(void)
         perror ("Socket was not created");
         exit (EXIT_FAILURE);
     }
+    // SOCK_DGRAM означает именно UDP сокет
     // Разрешаем немедленное переиспользование сокета
     int opt = 1;
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (char*)&opt, sizeof(opt));

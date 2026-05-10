@@ -1,0 +1,5 @@
+./cli 10000 out1.txt &
+./cli 10000 out2.txt &
+./cli 10000 out3.txt &
+./cli 10000 out4.txt &
+./cli 10000 out5.txt &

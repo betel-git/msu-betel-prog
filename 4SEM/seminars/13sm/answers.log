@@ -1,0 +1,34 @@
+User: раз | Q: 1 | Result: INCORRECT | Answer: 1
+User: два | Q: 1 | Result: CORRECT | Answer: 2
+User: два | Q: 2 | Result: CORRECT | Answer: 1,2
+User: раз | Q: 2 | Result: INCORRECT | Answer: 2,3
+User: раз | Q: 3 | Result: CORRECT | Answer: 0
+User: два | Q: 3 | Result: CORRECT | Answer: 0
+User: два | Q: 4 | Result: CORRECT | Answer: 5
+User: два | Q: 5 | Result: CORRECT | Answer: 
+User: два | Q: 6 | Result: CORRECT | Answer: 
+User: два | Q: 7 | Result: CORRECT | Answer: 
+User: два | Q: 8 | Result: INCORRECT | Answer: 
+User: два | Q: 9 | Result: CORRECT | Answer: 
+User: тестер | Q: 1 | Result: CORRECT | Answer: 2
+User: тестер | Q: 2 | Result: CORRECT | Answer: 1,2
+User: тестер | Q: 5 | Result: CORRECT | Answer: 
+User: тестер | Q: 6 | Result: CORRECT | Answer: 
+User: тестер | Q: 7 | Result: CORRECT | Answer: 
+User: тестер | Q: 8 | Result: INCORRECT | Answer: 
+User: тестер | Q: 9 | Result: CORRECT | Answer: 
+User: тестер2 | Q: 1 | Result: CORRECT | Answer: 2
+User: тестер2 | Q: 2 | Result: CORRECT | Answer: 1,2
+User: тестер22 | Q: 1 | Result: CORRECT | Answer: 2
+User: тестер22 | Q: 2 | Result: CORRECT | Answer: 1,2
+User: тестер22 | Q: 3 | Result: CORRECT | Answer: 111
+User: тестер22 | Q: 4 | Result: CORRECT | Answer: 1111
+User: тестер22 | Q: 5 | Result: CORRECT | Answer: 111
+User: тестер22 | Q: 6 | Result: INCORRECT | Answer: 11111
+User: тестер22 | Q: 7 | Result: CORRECT | Answer: нет
+User: 666 | Q: 1 | Result: INCORRECT | Answer: 3
+User: 666 | Q: 2 | Result: CORRECT | Answer: 1,2
+User: 666 | Q: 3 | Result: CORRECT | Answer: 1111
+
+User: 666 | Q: 4 | Result: CORRECT | Answer: 22222222222222222222222222222
+User: 666 | Q: 5 | Result: CORRECT | Answer: 5.0
